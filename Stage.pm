@@ -3,7 +3,7 @@ use Apache::Constants qw(DECLINED);
 use strict;
 use vars qw($VERSION $STAGE_REGEX $DEBUG);
 
-$VERSION = substr(q$Revision: 1.18 $,10);
+$VERSION = '1.20';
 $DEBUG = 0;
 
 sub handler {
@@ -127,8 +127,17 @@ Apache::Stage. If you need coexistence with different ErrorDocument
 handlers, you will either have to disable them for /STAGE or integrate
 the code of Apache::Stage into an if/else branch based on the path.
 
+=head1 HISTORY
+
+This module has not changed since 1997.
+
 =head1 AUTHOR
 
-Andreas König <koenig@kulturbox.de>
+andreas.koenig@anima.de
+
+=head1 LICENSE
+
+This program is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
 
 =cut

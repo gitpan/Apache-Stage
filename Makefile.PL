@@ -1,13 +1,21 @@
 use ExtUtils::MakeMaker;
-# See lib/ExtUtils/MakeMaker.pm for details of how to influence
-# the contents of the Makefile that is written.
+
 WriteMakefile(
 	      'NAME'	=> 'Apache::Stage',
 	      'VERSION_FROM' => 'Stage.pm', # finds $VERSION
+              depend => { Makefile => '$(VERSION_FROM)' },
 	      dist => {
-		       PREOP => 'co -l README && pod2text Stage.pm > README && ci -u README',
+                       DIST_DEFAULT => 'README all tardist',
 		       SUFFIX => 'gz',
 		       COMPRESS => 'gzip -9',
 		      }
 );
 
+sub MY::postamble {
+  q{
+README: Stage.pm Makefile
+	chmod +w $@
+	pod2text Stage.pm > $@
+
+}
+}
